@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GLDER Airdrop Oyunu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Başlangıç Ekranı -->
+    <div id="loading-screen">
+        <div class="text">$GLDER AİRDROP</div>
+        <img src="coin.png" alt="Coin" class="coin">
+        <div class="loading-text">Yükleniyor...</div>
+        <div class="loader"></div>
+    </div>
+
+    <!-- Oyun Ekranı -->
+    <div id="game-screen" style="display:none;">
+        <!-- Ana Sayfa İçeriği -->
+        <div id="home-content" class="content active">
+            <div class="game-header">
+                <div class="score" id="glider-score">GLDER: 0</div>
+                <img src="logo.png" alt="Logo" class="logo">
+
+                <div class="profile">
+                    <img src="picture.png" alt="Profil Resmi" class="profile-img">
+                    <div id="telegram-username" class="telegram-username"></div> <!-- Kullanıcı adı burada görünecek -->
+                </div>
+            </div>
+
+            <!-- GLDER Official Community Kutusu (sadece home-content içerisinde olacak) -->
+            <div class="community-box">
+                <a href="https://example.com" target="_blank" class="community-link">
+                    GLDER Official Community
+                </a>
+            </div>
+        </div>
+
+        <!-- Earn İçeriği -->
+        <div id="earn-content" class="content">
+            <h2>Puan Kazanmak İçin Görevler</h2>
+            <div class="social-tasks">
+                <div class="task" id="task-1000" onclick="earnPoints(1000)">
+                    <img src="youtube.png" alt="YouTube">
+                    <span>YouTube kanalımıza abone ol - 1000 GLDER</span>
+                </div>
+                <div class="task" id="task-1500" onclick="earnPoints(1500)">
+                    <img src="telegram.png" alt="Telegram">
+                    <span>Telegram grubumuza katıl - 1500 GLDER</span>
+                </div>
+                <div class="task" id="task-1200" onclick="earnPoints(1200)">
+                    <img src="twitter.png" alt="Twitter">
+                    <span>Twitter hesabımızı takip et - 1200 GLDER</span>
+                </div>
+                <div class="task" id="task-1300" onclick="earnPoints(1300)">
+                    <img src="instagram.png" alt="Instagram">
+                    <span>Instagram hesabımızı takip et - 1300 GLDER</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Friends Sayfası -->
+        <div id="friends-content" class="content">
+            <h2>Arkadaşlar</h2>
+            <p>Arkadaşlarınızla oyun oynayın!</p>
+        </div>
+
+        <!-- Leaderboard Sayfası -->
+        <div id="leaderboard-content" class="content">
+            <h2>Liderlik Tablosu</h2>
+            <p>Liderlik tablosunu burada görebilirsiniz.</p>
+        </div>
+
+        <button class="start-button" onclick="startGame()">Başla</button>
+
+        <!-- Alt Sabit Butonlar -->
+        <div class="buttons">
+            <button class="icon-button" onclick="showPage('home-content')">
+                <img src="home.png" alt="Home">
+            </button>
+            <button class="icon-button" onclick="showPage('earn-content')">
+                <img src="earn.png" alt="Earn">
+            </button>
+            <button class="icon-button" onclick="showPage('friends-content')">
+                <img src="friends.png" alt="Friends">
+            </button>
+            <button class="icon-button" onclick="showPage('leaderboard-content')">
+                <img src="leaderboard.png" alt="Leaderboard">
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
