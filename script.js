@@ -43,12 +43,19 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         })
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Server yanıtı başarısız');
+        }
+        return response.json();
+    })
     .then(data => {
-        // Server'dan gelen kullanıcı adı bilgisini alıp sayfada gösteriyoruz
+        console.log(data);  // Server'dan gelen veriyi incelemek için
         if (data.username) {
             const telegramUsernameElement = document.getElementById('telegram-username');
             telegramUsernameElement.textContent = `Kullanıcı: ${data.username}`;  // Kullanıcı adını ekrana yazdır
+        } else {
+            console.error('Kullanıcı adı alınamadı.');
         }
     })
     .catch(error => {
