@@ -28,6 +28,32 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("game-screen").style.display = "flex";
         showPage('home-content'); // Başlangıçta ana sayfa içeriğini göster
     }, 5000);
+
+    // Server'dan kullanıcı adı bilgisini almak için fetch API kullanıyoruz
+    fetch('https://e185-31-155-29-50.ngrok-free.app/webhook', { // Buraya server URL'yi ekleyin
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            message: {
+                from: {
+                    username: "testUser"  // Burada bot ile alınacak gerçek kullanıcı adı olacaktır.
+                }
+            }
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Server'dan gelen kullanıcı adı bilgisini alıp sayfada gösteriyoruz
+        if (data.username) {
+            const telegramUsernameElement = document.getElementById('telegram-username');
+            telegramUsernameElement.textContent = `Kullanıcı: ${data.username}`;  // Kullanıcı adını ekrana yazdır
+        }
+    })
+    .catch(error => {
+        console.error('Hata oluştu:', error);
+    });
 });
 
 // Sayfa geçişi fonksiyonu
@@ -63,7 +89,3 @@ function earnPoints(points) {
         taskElement.style.pointerEvents = 'none';
     }
 }
-
-// Telegram Kullanıcı Adı (Buraya kullanıcı adı dinamik olarak alınacak)
-const telegramUsername = "KullanıcıAdı"; // Burada bot ile alınacak gerçek kullanıcı adı olacaktır.
-document.getElementById('telegram-username').textContent = `Kullanıcı: ${telegramUsername}`;
